@@ -78,7 +78,7 @@ export default function PromptLabPage() {
         </div>
         <div>
           <h1 className="text-3xl font-extrabold">Prompt Lab</h1>
-          <p className="text-slate-400 text-sm">Converse com o Beto IA — IA de verdade, em português</p>
+          <p className="text-slate-400 text-sm">Converse com o Ronny IA — IA de verdade, em português</p>
         </div>
       </div>
 
@@ -101,7 +101,7 @@ export default function PromptLabPage() {
         {mensagens.length === 0 && (
           <div className="flex flex-col items-center justify-center h-40 text-center text-slate-500">
             <div className="text-4xl mb-3">🤖</div>
-            <p className="text-sm">Olá! Sou o Beto IA. Pergunte qualquer coisa sobre IA, tecnologia ou como posso ajudar no seu dia a dia.</p>
+            <p className="text-sm">Olá! Sou o Ronny IA. Pergunte qualquer coisa sobre IA, tecnologia ou como posso ajudar no seu dia a dia.</p>
           </div>
         )}
         {mensagens.map((msg, i) => (
@@ -122,7 +122,7 @@ export default function PromptLabPage() {
         {carregando && (
           <div className="flex justify-start">
             <div className="bg-slate-800 rounded-2xl rounded-bl-sm px-4 py-3 flex items-center gap-2 text-slate-400 text-sm">
-              <Loader2 className="w-4 h-4 animate-spin" /> Beto está pensando...
+              <Loader2 className="w-4 h-4 animate-spin" /> Ronny está pensando...
             </div>
           </div>
         )}
