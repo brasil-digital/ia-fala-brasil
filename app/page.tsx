@@ -74,7 +74,7 @@ export default function Home() {
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
             Aprenda{" "}
             <span className="gradient-text">Inteligência<br />Artificial</span>{" "}
-            do jeito brasileiro
+            do jeito <span className="text-yellow-400">Brasileiro</span>
           </h1>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
             Prático, acessível e sem enrolação. Para estudantes, professores e qualquer cidadão
