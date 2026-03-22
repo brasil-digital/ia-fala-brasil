@@ -6,14 +6,14 @@ import s from "./sobre.module.css";
 
 const missaoCards = [
   { icon: "🇧🇷", titulo: "Contexto brasileiro", desc: "Nada de exemplos importados. Golpes do WhatsApp, fake news no Facebook, viés em algoritmos de crédito — nossa realidade, nossa linguagem." },
-  { icon: "🏫", titulo: "Educação pública primeiro", desc: "100% gratuito para escolas públicas. Acreditamos que o acesso à alfabetização em IA não pode ser um privilégio de escolas privadas." },
+  { icon: "🏫", titulo: "Acessível desde o início", desc: "60 dias gratuitos para qualquer escola testar a plataforma. Após o período de teste, plano mensal ou anual por cadastro — sem surpresas." },
   { icon: "⚡", titulo: "IA de verdade, não simulação", desc: "Os módulos usam IA real integrada. O aluno aprende fazendo — conversando com a tecnologia, não lendo sobre ela." },
 ];
 
 const numeros = [
   { num: "4", label: "Módulos ativos" },
   { num: "3", label: "Perfis atendidos" },
-  { num: "R$ 0", label: "Para escolas públicas" },
+  { num: "60 dias", label: "Gratuito para teste" },
   { num: "2026", label: "Ano de lançamento" },
 ];
 

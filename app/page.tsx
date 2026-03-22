@@ -44,7 +44,7 @@ const forWho = [
 ];
 
 const stats = [
-  { value: "100%", label: "Gratuito para escolas públicas" },
+  { value: "60 dias", label: "Gratuito para teste — após, plano mensal ou anual" },
   { value: "PT-BR", label: "Conteúdo em português nativo" },
   { value: "IA Real", label: "Sem simulações — IA de verdade" },
 ];

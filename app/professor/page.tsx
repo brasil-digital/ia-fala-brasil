@@ -168,11 +168,11 @@ function FormularioCadastro() {
       >
         {enviando
           ? <><Loader2 className="w-5 h-5 animate-spin" /> Enviando...</>
-          : <><Send className="w-4 h-4" /> Quero acesso gratuito</>
+          : <><Send className="w-4 h-4" /> Quero 60 dias grátis</>
         }
       </button>
       <p className="text-xs text-gray-400 text-center">
-        100% gratuito para escolas públicas · Sem spam · Cancele quando quiser
+        Gratuito por 60 dias · Após o período de teste, plano mensal ou anual por cadastro
       </p>
     </form>
   );
@@ -199,7 +199,7 @@ export default function ProfessorPage() {
             </h1>
             <p className="text-gray-500 text-lg mb-8">
               Planos de aula prontos, alinhados à BNCC, com IA de verdade integrada.
-              Cadastre sua escola e receba tudo gratuitamente.
+              Cadastre sua escola e teste por 60 dias. Após esse período, plano mensal ou anual por cadastro.
             </p>
 
             <div className="flex flex-col gap-3 mb-8">
@@ -228,7 +228,7 @@ export default function ProfessorPage() {
                 Cadastre sua escola
               </h2>
               <p className="text-gray-500 text-sm">
-                Acesso gratuito. Sem burocracia. Começa hoje.
+                60 dias grátis para teste. Sem burocracia. Começa hoje.
               </p>
             </div>
             <FormularioCadastro />
@@ -336,7 +336,7 @@ export default function ProfessorPage() {
             Pronto para transformar sua sala de aula?
           </h2>
           <p className="text-green-100 mb-8">
-            Cadastre sua escola agora e receba os materiais gratuitamente.
+            Cadastre sua escola agora e teste por 60 dias. Após o período, plano mensal ou anual.
           </p>
           <a
             href="#topo"
