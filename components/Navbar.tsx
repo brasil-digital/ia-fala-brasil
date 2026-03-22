@@ -18,8 +18,9 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-md shadow-sm">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image
@@ -30,7 +31,9 @@ export default function Navbar() {
             className="rounded-xl object-cover"
             priority
           />
-          <span className="font-bold text-lg text-white">IA <span className="text-emerald-400">Fala Brasil</span></span>
+          <span className="font-bold text-lg text-slate-900">
+            IA <span className="text-green-700">Fala Brasil</span>
+          </span>
         </Link>
 
         {/* Desktop links */}
@@ -42,8 +45,8 @@ export default function Navbar() {
               className={clsx(
                 "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors",
                 pathname.startsWith(href)
-                  ? "bg-emerald-500/20 text-emerald-400"
-                  : "text-slate-400 hover:text-white hover:bg-slate-800"
+                  ? "bg-green-50 text-green-700 border border-green-200"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
               )}
             >
               <Icon className="w-4 h-4" />
@@ -52,7 +55,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/aprender/prompt-lab"
-            className="ml-2 px-4 py-2 rounded-lg bg-emerald-500 text-white text-sm font-semibold hover:bg-emerald-400 transition-colors"
+            className="ml-2 px-4 py-2 rounded-lg bg-green-700 text-white text-sm font-semibold hover:bg-green-600 transition-colors shadow-sm"
           >
             Experimentar IA
           </Link>
@@ -60,7 +63,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden p-2 text-slate-400 hover:text-white"
+          className="md:hidden p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg"
           onClick={() => setOpen(!open)}
         >
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -69,7 +72,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-slate-800 bg-slate-950 px-4 py-3 flex flex-col gap-1">
+        <div className="md:hidden border-t border-gray-200 bg-white px-4 py-3 flex flex-col gap-1">
           {links.map(({ href, label, icon: Icon }) => (
             <Link
               key={href}
@@ -78,8 +81,8 @@ export default function Navbar() {
               className={clsx(
                 "flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium",
                 pathname.startsWith(href)
-                  ? "bg-emerald-500/20 text-emerald-400"
-                  : "text-slate-400 hover:text-white hover:bg-slate-800"
+                  ? "bg-green-50 text-green-700"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
               )}
             >
               <Icon className="w-4 h-4" />
@@ -89,7 +92,7 @@ export default function Navbar() {
           <Link
             href="/aprender/prompt-lab"
             onClick={() => setOpen(false)}
-            className="mt-2 px-4 py-3 rounded-lg bg-emerald-500 text-white text-sm font-semibold text-center"
+            className="mt-2 px-4 py-3 rounded-lg bg-green-700 text-white text-sm font-semibold text-center"
           >
             Experimentar IA
           </Link>

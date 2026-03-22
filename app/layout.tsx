@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
     title: "IA Fala Brasil",
   },
   openGraph: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#10b981",
+  themeColor: "#009C3B",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -47,11 +47,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-slate-950 text-slate-50">
+      <body className="min-h-full flex flex-col bg-slate-50 text-slate-900">
         <Navbar />
         <main className="flex-1">{children}</main>
-        <footer className="border-t border-slate-800 py-6 text-center text-slate-500 text-sm">
-          © 2026 IA Fala Brasil · Feito com 💚 para o povo brasileiro
+        <footer className="border-t border-gray-200 bg-white py-6 text-center text-gray-500 text-sm">
+          © 2026 IA Fala Brasil · Educação · Tecnologia · Futuro 🇧🇷
         </footer>
       </body>
     </html>
