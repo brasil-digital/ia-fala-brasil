@@ -2,16 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { Sora, DM_Serif_Display } from "next/font/google";
 import s from "./sobre.module.css";
-
-const sora = Sora({ subsets: ["latin"], variable: "--font-sora" });
-const dmSerif = DM_Serif_Display({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-dm-serif",
-});
 
 const missaoCards = [
   { icon: "🇧🇷", titulo: "Contexto brasileiro", desc: "Nada de exemplos importados. Golpes do WhatsApp, fake news no Facebook, viés em algoritmos de crédito — nossa realidade, nossa linguagem." },
@@ -40,7 +31,7 @@ export default function SobrePage() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add(s.visible); }),
       { threshold: 0.12 }
     );
     pageRef.current?.querySelectorAll(`.${s.fadeIn}`).forEach((el) => observer.observe(el));
@@ -48,7 +39,7 @@ export default function SobrePage() {
   }, []);
 
   return (
-    <div ref={pageRef} className={`${s.page} ${sora.variable} ${dmSerif.variable}`}>
+    <div ref={pageRef} className={s.page}>
 
       {/* HERO */}
       <div className={s.hero}>

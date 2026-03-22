@@ -315,7 +315,7 @@
   transform: translateY(24px);
   transition: opacity .6s ease, transform .6s ease;
 }
-.fadeIn.visible {
-  opacity: 1;
-  transform: translateY(0);
+.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }

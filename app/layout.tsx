@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Sora, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
+const geist    = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
+const sora     = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap" });
+const dmSerif  = DM_Serif_Display({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-dm-serif", display: "swap" });
 
 export const metadata: Metadata = {
   title: "IA Fala Brasil",
@@ -31,7 +33,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${geist.variable} h-full`}>
+    <html lang="pt-BR" className={`${geist.variable} ${sora.variable} ${dmSerif.variable} h-full`}>
       <head>
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
