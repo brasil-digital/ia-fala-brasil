@@ -496,6 +496,47 @@
   color: var(--muted);
 }
 
+/* ── LEGIS LINKS ── */
+.legisLinks {
+  margin-top: .85rem;
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+.legisBtn {
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .3rem .7rem;
+  border-radius: 8px;
+  background: var(--green-l);
+  color: var(--green-d);
+  text-decoration: none;
+  transition: background .2s;
+}
+.legisBtn:hover { background: #C5EED8; }
+.legisBtnOut {
+  font-size: .72rem;
+  font-weight: 600;
+  padding: .3rem .7rem;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  transition: border-color .2s, color .2s;
+}
+.legisBtnOut:hover { border-color: var(--green); color: var(--green); }
+
+/* trilha link label */
+.trilhaLink {
+  color: var(--green-d);
+  font-weight: 600;
+  font-size: .72rem;
+}
+
 /* ── FADE IN ── */
 .fadeIn {
   opacity: 0;
