@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Brain, Newspaper, Zap, Shield, Users, BookOpen, ArrowRight, CheckCircle } from "lucide-react";
+import CadastroForm from "@/components/CadastroForm";
 
 const modules = [
   {
@@ -106,6 +107,24 @@ export default function Home() {
               <div className="text-sm text-green-100 mt-1">{label}</div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Cadastro */}
+      <section className="py-16 px-4 bg-white border-b border-gray-100">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 border border-green-200 text-green-700 text-xs font-semibold mb-5">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            Acesso gratuito · Sem cartão de crédito
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-slate-900">
+            Faça parte do movimento
+          </h2>
+          <p className="text-gray-500 mb-8 text-base">
+            Cadastre-se gratuitamente e explore a plataforma completa.
+            Você será avisado(a) em primeira mão sobre novidades e planos.
+          </p>
+          <CadastroForm />
         </div>
       </section>
 
