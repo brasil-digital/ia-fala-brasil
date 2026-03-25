@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, Users, Shield, Info, Menu, X } from "lucide-react";
+import { BookOpen, Users, Shield, Info, GraduationCap, Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import clsx from "clsx";
 
 const links = [
   { href: "/aprender", label: "Aprender", icon: BookOpen },
+  { href: "/academia", label: "Academia IA", icon: GraduationCap },
   { href: "/professor", label: "Professor", icon: Users },
   { href: "/cidadao", label: "Cidadão", icon: Shield },
   { href: "/sobre", label: "Sobre", icon: Info },
