@@ -40,14 +40,13 @@ export async function POST(req: NextRequest) {
     if (!res.ok) {
       const err = await res.text();
       console.error("Supabase error:", res.status, err);
-      return NextResponse.json({ error: `Supabase ${res.status}: ${err}` }, { status: 500 });
+      return NextResponse.json({ error: "Erro ao salvar cadastro. Tente novamente." }, { status: 500 });
     }
 
     return NextResponse.json({ ok: true });
   } catch (e) {
-    const msg = e instanceof Error ? e.message : String(e);
-    console.error("Catch error:", msg);
-    return NextResponse.json({ error: `Erro: ${msg}` }, { status: 500 });
+    console.error(e);
+    return NextResponse.json({ error: "Erro interno. Tente novamente." }, { status: 500 });
   }
 }
 
