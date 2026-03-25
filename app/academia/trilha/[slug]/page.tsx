@@ -55,15 +55,16 @@ function renderBlock(block: Block, i: number) {
   }
 }
 
-export default function TrilhaPage({ params }: { params: { slug: string } }) {
-  const trilha = getTrilha(params.slug);
+export default async function TrilhaPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const trilha = getTrilha(slug);
   if (!trilha) notFound();
 
   return (
     <div className={s.page}>
 
       {/* HERO */}
-      <div className={s.hero} style={{ "--icon-bg": trilha.bg } as React.CSSProperties}>
+      <div className={s.hero}>
         <div className={s.heroInner}>
           <Link href="/academia" className={s.back}>
             <ArrowLeft size={15} /> Academia IA
@@ -140,7 +141,7 @@ export default function TrilhaPage({ params }: { params: { slug: string } }) {
           {/* Conteúdo inline das aulas que não têm href */}
           {trilha.aulas
             .filter((a) => !a.href && a.conteudo && a.conteudo.length > 0)
-            .map((aula, idx) => (
+            .map((aula) => (
               <div key={aula.id} id={`aula-${aula.id}`} className={s.aulaContent}>
                 <div className={s.aulaContentHeader}>
                   <div className={`${s.aulaIconWrap} ${s[`tipo_${aula.tipo}`]}`}>

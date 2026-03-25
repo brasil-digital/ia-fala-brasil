@@ -57,8 +57,9 @@ function renderBlock(block: Block, i: number) {
   }
 }
 
-export default function ArtigoPage({ params }: { params: { slug: string } }) {
-  const artigo = getArtigo(params.slug);
+export default async function ArtigoPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const artigo = getArtigo(slug);
   if (!artigo) notFound();
 
   return (
