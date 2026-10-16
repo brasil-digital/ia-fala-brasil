@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Newspaper, Search, AlertTriangle, CheckCircle, HelpCircle, Loader2 } from "lucide-react";
+import { origem } from "@/lib/origem";
 
 const exemplos = [
   "Governo vai distribuir R$ 5.000 para todos os brasileiros cadastrados no CPF. Clique no link para se cadastrar.",
@@ -24,7 +25,7 @@ export default function DetectaFakePage() {
       const res = await fetch("/api/ia", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ modo: "detecta-fake", conteudo: texto }),
+        body: JSON.stringify({ modo: "detecta-fake", conteudo: texto, origem: origem() }),
       });
       const data = await res.json();
       if (data.error) setErro(data.error);
@@ -88,6 +89,7 @@ export default function DetectaFakePage() {
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700 mb-2">Texto para analisar</label>
         <textarea
+          maxLength={4000}
           value={texto}
           onChange={(e) => setTexto(e.target.value)}
           placeholder="Cole aqui a notícia, mensagem ou post que você quer verificar..."

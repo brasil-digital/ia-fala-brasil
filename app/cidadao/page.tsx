@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Shield, AlertTriangle, CheckCircle, Loader2, Search } from "lucide-react";
+import { origem } from "@/lib/origem";
 
 const exemplos = [
   "Recebi uma ligação do 'Banco do Brasil' dizendo que minha conta foi bloqueada. A voz parecia robótica. O que faço?",
@@ -32,7 +33,7 @@ export default function CidadaoPage() {
       const res = await fetch("/api/ia", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ modo: "golpe-ia", conteudo: situacao }),
+        body: JSON.stringify({ modo: "golpe-ia", conteudo: situacao, origem: origem() }),
       });
       const data = await res.json();
       if (data.error) setErro(data.error);
@@ -91,6 +92,7 @@ export default function CidadaoPage() {
           Descreva a situação suspeita
         </label>
         <textarea
+          maxLength={4000}
           value={situacao}
           onChange={(e) => setSituacao(e.target.value)}
           placeholder="Ex: Recebi uma mensagem no WhatsApp de um número desconhecido dizendo ser meu filho e pedindo Pix urgente..."

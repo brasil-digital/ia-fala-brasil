@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Brain, Search, Loader2, AlertTriangle } from "lucide-react";
+import { origem } from "@/lib/origem";
 
 const cenarios = [
   "Um banco usa IA para aprovar crédito e moradores da periferia recebem menos aprovações. Como isso acontece?",
@@ -25,7 +26,7 @@ export default function ViesNaMaquinaPage() {
       const res = await fetch("/api/ia", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ modo: "vies-na-maquina", conteudo: cenario }),
+        body: JSON.stringify({ modo: "vies-na-maquina", conteudo: cenario, origem: origem() }),
       });
       const data = await res.json();
       if (data.error) setErro(data.error);
@@ -76,6 +77,7 @@ export default function ViesNaMaquinaPage() {
           Descreva um cenário ou faça uma pergunta sobre viés em IA
         </label>
         <textarea
+          maxLength={4000}
           value={cenario}
           onChange={(e) => setCenario(e.target.value)}
           placeholder="Ex: Como a IA pode discriminar pessoas negras em sistemas de crédito?"

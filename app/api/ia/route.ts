@@ -1,14 +1,52 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
+import { permitido } from "@/lib/limite";
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
+const MAX_CARACTERES = 4000;
+const ORIGENS_OK = ["https://www.iafalabrasil.com.br", "https://iafalabrasil.com.br", "http://localhost:3000"];
+
+// Conta cada uso (modo + origem) no Supabase; se falhar, só ignora.
+async function registrarUso(modo: string, origem: string) {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_ANON_KEY;
+  if (!url || !key) return;
+  try {
+    await fetch(`${url}/rest/v1/usos_ia`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", apikey: key, Authorization: `Bearer ${key}`, Prefer: "return=minimal" },
+      body: JSON.stringify({ modo, origem }),
+      signal: AbortSignal.timeout(3000),
+    });
+  } catch {}
+}
+
 export async function POST(req: NextRequest) {
   try {
-    const { modo, conteudo } = await req.json();
+    const origemHeader = req.headers.get("origin");
+    if (origemHeader && !ORIGENS_OK.includes(origemHeader) && !origemHeader.endsWith(".vercel.app")) {
+      return NextResponse.json({ error: "Acesso não permitido." }, { status: 403 });
+    }
+
+    const { modo, conteudo, origem } = await req.json();
 
     if (!conteudo || typeof conteudo !== "string") {
       return NextResponse.json({ error: "Conteúdo inválido." }, { status: 400 });
+    }
+    if (conteudo.length > MAX_CARACTERES) {
+      return NextResponse.json(
+        { error: `Texto muito longo. Cole até ${MAX_CARACTERES} caracteres.` },
+        { status: 400 },
+      );
+    }
+
+    const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "anon";
+    if (!permitido(ip)) {
+      return NextResponse.json(
+        { error: "Você usou bastante a IA agora. Espere alguns minutos e tente de novo. 🙏" },
+        { status: 429 },
+      );
     }
 
     const prompts: Record<string, string> = {
@@ -63,7 +101,8 @@ ${conteudo}
 """`,
     };
 
-    const systemPrompt = prompts[modo] || prompts["prompt-lab"];
+    const modoValido = modo in prompts ? modo : "prompt-lab";
+    const systemPrompt = prompts[modoValido];
 
     const message = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
@@ -72,6 +111,7 @@ ${conteudo}
     });
 
     const text = message.content[0].type === "text" ? message.content[0].text : "";
+    await registrarUso(modoValido, typeof origem === "string" ? origem.slice(0, 40) : "web");
     return NextResponse.json({ resposta: text });
   } catch (err) {
     console.error("[IA API Error]", err);

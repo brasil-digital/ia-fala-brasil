@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Zap, Send, Loader2, RotateCcw, Info } from "lucide-react";
+import { origem } from "@/lib/origem";
 
 type Mensagem = { role: "user" | "assistant"; content: string };
 
@@ -43,7 +44,7 @@ export default function PromptLabPage() {
       const res = await fetch("/api/ia", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ modo: "prompt-lab", conteudo: msg }),
+        body: JSON.stringify({ modo: "prompt-lab", conteudo: msg, origem: origem() }),
       });
       const data = await res.json();
       setMensagens([...novas, { role: "assistant", content: data.resposta || data.error || "Erro inesperado." }]);
@@ -159,6 +160,7 @@ export default function PromptLabPage() {
         )}
         <div className="flex-1 flex gap-2">
           <input
+            maxLength={4000}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && enviar()}

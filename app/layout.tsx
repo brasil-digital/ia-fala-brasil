@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Sora, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import OrigemTracker from "@/components/OrigemTracker";
+import { Analytics } from "@vercel/analytics/next";
 
 const geist    = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 const sora     = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap" });
@@ -71,6 +73,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="border-t border-gray-200 bg-white py-6 text-center text-gray-500 text-sm">
           © 2026 IA Fala Brasil · Educação · Tecnologia · Futuro 🇧🇷
         </footer>
+        <OrigemTracker />
+        <Analytics />
       </body>
     </html>
   );
