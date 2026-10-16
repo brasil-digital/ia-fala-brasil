@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Brain, Search, Loader2, AlertTriangle } from "lucide-react";
 import { origem } from "@/lib/origem";
+import RespostaIA from "@/components/RespostaIA";
 
 const cenarios = [
   "Um banco usa IA para aprovar crédito e moradores da periferia recebem menos aprovações. Como isso acontece?",
@@ -35,21 +36,6 @@ export default function ViesNaMaquinaPage() {
       setErro("Erro de conexão. Tente novamente.");
     }
     setCarregando(false);
-  }
-
-  function formatarResposta(texto: string) {
-    return texto.split("\n").map((linha, i) => {
-      if (linha.match(/^\*\*(.*)\*\*$/)) {
-        return <h3 key={i} className="font-bold text-slate-900 mt-4 mb-1">{linha.replace(/\*\*/g, "")}</h3>;
-      }
-      if (linha.startsWith("- ") || linha.startsWith("• ")) {
-        return <li key={i} className="ml-4 mb-1 text-gray-700">{linha.slice(2)}</li>;
-      }
-      if (linha.trim() === "") return <br key={i} />;
-      return <p key={i} className="text-gray-700 mb-2" dangerouslySetInnerHTML={{
-        __html: linha.replace(/\*\*(.*?)\*\*/g, "<strong class='text-slate-900'>$1</strong>")
-      }} />;
-    });
   }
 
   return (
@@ -120,15 +106,13 @@ export default function ViesNaMaquinaPage() {
       )}
 
       {resultado && (
-        <div className="mt-8 p-6 rounded-2xl bg-white border border-gray-200 shadow-sm">
-          <div className="flex items-center gap-2 mb-4">
-            <Brain className="w-5 h-5 text-amber-500" />
-            <span className="font-bold text-amber-600">Análise de Viés</span>
-          </div>
-          <div className="text-sm leading-relaxed">
-            {formatarResposta(resultado)}
-          </div>
-        </div>
+        <RespostaIA
+          resposta={resultado}
+          titulo="Análise de Viés"
+          icone={<Brain className="w-5 h-5 text-amber-500" />}
+          caminho="/aprender/vies-na-maquina"
+          chamada="Descubra como a IA pode discriminar"
+        />
       )}
     </div>
   );

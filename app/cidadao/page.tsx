@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Shield, AlertTriangle, CheckCircle, Loader2, Search } from "lucide-react";
 import { origem } from "@/lib/origem";
+import RespostaIA from "@/components/RespostaIA";
 
 const exemplos = [
   "Recebi uma ligação do 'Banco do Brasil' dizendo que minha conta foi bloqueada. A voz parecia robótica. O que faço?",
@@ -42,21 +43,6 @@ export default function CidadaoPage() {
       setErro("Erro de conexão. Tente novamente.");
     }
     setCarregando(false);
-  }
-
-  function formatarResposta(texto: string) {
-    return texto.split("\n").map((linha, i) => {
-      if (linha.match(/^\*\*(.*)\*\*$/)) {
-        return <h3 key={i} className="font-bold text-slate-900 mt-4 mb-1">{linha.replace(/\*\*/g, "")}</h3>;
-      }
-      if (linha.startsWith("- ") || linha.startsWith("• ")) {
-        return <li key={i} className="ml-4 mb-1 text-gray-700">{linha.slice(2)}</li>;
-      }
-      if (linha.trim() === "") return <br key={i} />;
-      return <p key={i} className="text-gray-700 mb-2" dangerouslySetInnerHTML={{
-        __html: linha.replace(/\*\*(.*?)\*\*/g, "<strong class='text-slate-900'>$1</strong>")
-      }} />;
-    });
   }
 
   return (
@@ -135,20 +121,22 @@ export default function CidadaoPage() {
       )}
 
       {resultado && (
-        <div className="mt-8 p-6 rounded-2xl bg-white border border-gray-200 shadow-sm">
-          <div className="flex items-center gap-2 mb-4">
-            <CheckCircle className="w-5 h-5 text-green-600" />
-            <span className="font-bold text-green-700">Análise de Segurança</span>
-          </div>
-          <div className="text-sm leading-relaxed">
-            {formatarResposta(resultado)}
-          </div>
-          <div className="mt-6 pt-4 border-t border-gray-200 text-xs text-gray-400">
-            🚨 Se você foi vítima de golpe: Boletim de Ocorrência online em{" "}
-            <strong className="text-gray-600">delegaciaonline.ssp.sp.gov.br</strong>{" "}
-            ou ligue <strong className="text-gray-600">197</strong> (Polícia Civil).
-          </div>
-        </div>
+        <RespostaIA
+          resposta={resultado}
+          titulo="Análise de Segurança"
+          icone={<CheckCircle className="w-5 h-5 text-green-600" />}
+          caminho="/cidadao"
+          chamada="Proteja sua família de golpes, teste você também"
+          veredito="golpe"
+          rodape={
+            <span>
+              🚨 <strong className="text-gray-600">Caiu em golpe?</strong> Ligue já para o seu banco e peça o
+              bloqueio. No Brasil, faça o B.O. na delegacia online do seu estado ou ligue{" "}
+              <strong className="text-gray-600">190</strong>. Nos EUA, denuncie em{" "}
+              <strong className="text-gray-600">reportfraud.ftc.gov</strong>.
+            </span>
+          }
+        />
       )}
     </div>
   );

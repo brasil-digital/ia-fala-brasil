@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Zap, Send, Loader2, RotateCcw, Info } from "lucide-react";
 import { origem } from "@/lib/origem";
+import { inline } from "@/components/RespostaIA";
 
 type Mensagem = { role: "user" | "assistant"; content: string };
 
@@ -63,9 +64,7 @@ export default function PromptLabPage() {
         return <li key={i} className="ml-4 mb-1">{linha.slice(2)}</li>;
       }
       if (linha.trim() === "") return <br key={i} />;
-      return <p key={i} className="mb-1" dangerouslySetInnerHTML={{
-        __html: linha.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-      }} />;
+      return <p key={i} className="mb-1">{inline(linha)}</p>;
     });
   }
 

@@ -61,8 +61,8 @@ export default function CadastroForm() {
           Bem-vindo(a), {form.nome.split(" ")[0]}! 🎉
         </h3>
         <p className="text-gray-500 text-sm max-w-sm mx-auto">
-          Cadastro confirmado. Você será avisado(a) em primeira mão sobre novidades,
-          planos e quando a assinatura for lançada.
+          Cadastro confirmado. Você vai receber em primeira mão os novos módulos,
+          alertas de golpes e as novidades do IA Fala Brasil.
         </p>
         {total !== null && (
           <p className="mt-4 text-xs text-green-700 font-semibold">

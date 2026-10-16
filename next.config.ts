@@ -4,6 +4,17 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  // Quem vem do app Fala Brasil cai direto no Detecta Fake (o utm segue junto).
+  async redirects() {
+    return [
+      {
+        source: "/",
+        has: [{ type: "query", key: "utm_source", value: "fala_brasil_app" }],
+        destination: "/aprender/detecta-fake",
+        permanent: false,
+      },
+    ];
+  },
   async headers() {
     return [
       {

@@ -45,7 +45,7 @@ const forWho = [
 ];
 
 const stats = [
-  { value: "60 dias", label: "Gratuito para teste — após, plano mensal ou anual" },
+  { value: "Grátis", label: "Para cidadãos e estudantes" },
   { value: "PT-BR", label: "Conteúdo em português nativo" },
   { value: "IA Real", label: "Sem simulações — IA de verdade" },
 ];
@@ -115,14 +115,14 @@ export default function Home() {
         <div className="max-w-2xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 border border-green-200 text-green-700 text-xs font-semibold mb-5">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            Acesso gratuito · Sem cartão de crédito
+            Opcional · Sem cartão de crédito
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-3 text-slate-900">
             Faça parte do movimento
           </h2>
           <p className="text-gray-500 mb-8 text-base">
-            Cadastre-se gratuitamente e explore a plataforma completa.
-            Você será avisado(a) em primeira mão sobre novidades e planos.
+            Todos os módulos funcionam sem cadastro. Deixe seu contato se quiser receber
+            novos módulos, alertas de golpes e novidades em primeira mão.
           </p>
           <CadastroForm />
         </div>
@@ -200,7 +200,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-gray-500">
-            {["Sem cadastro obrigatório", "Funciona no celular", "Instale como app"].map((t) => (
+            {["Sem cadastro", "Funciona no celular", "Instale como app"].map((t) => (
               <span key={t} className="flex items-center gap-1">
                 <CheckCircle className="w-4 h-4 text-green-600" /> {t}
               </span>

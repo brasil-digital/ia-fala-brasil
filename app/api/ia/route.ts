@@ -50,10 +50,12 @@ export async function POST(req: NextRequest) {
     }
 
     const prompts: Record<string, string> = {
-      "detecta-fake": `Você é um especialista em verificação de fatos no Brasil. Analise o texto abaixo e responda em português:
+      "detecta-fake": `Você é um especialista em verificação de fatos no Brasil. Analise o texto abaixo e responda em português.
 
-1. **Veredito**: Verdadeiro / Falso / Parcialmente verdadeiro / Impossível verificar
-2. **Análise**: O que está correto ou incorreto (máx. 3 parágrafos curtos)
+A PRIMEIRA linha da resposta deve ser exatamente: VEREDITO: <Verdadeiro | Falso | Parcialmente verdadeiro | Impossível verificar>
+Depois, com títulos em **negrito**:
+
+1. **Análise**: O que está correto ou incorreto (máx. 3 parágrafos curtos)
 3. **Sinais de alerta**: Liste até 5 características do texto que indicam manipulação (linguagem sensacionalista, ausência de fonte, etc.)
 4. **O que buscar**: Sugira onde a pessoa pode verificar a informação (ex: G1, Agência Lupa, UOL, dados do IBGE)
 5. **Dica educativa**: Uma lição sobre pensamento crítico relacionada a este caso
@@ -84,14 +86,17 @@ Cenário/Pergunta:
 ${conteudo}
 """`,
 
-      "golpe-ia": `Você é um especialista em segurança digital e proteção contra golpes com IA no Brasil. Analise o seguinte relato ou situação:
+      "golpe-ia": `Você é um especialista em segurança digital e proteção contra golpes com IA, para brasileiros no Brasil e no exterior. Analise o seguinte relato ou situação.
 
-1. **Diagnóstico**: É um golpe? É IA sendo usada de forma maliciosa? Qual tipo?
+A PRIMEIRA linha da resposta deve ser exatamente: VEREDITO: <É golpe | Precisa de cuidado | Não parece golpe>
+Depois, com títulos em **negrito**:
+
+1. **Diagnóstico**: Que tipo de golpe é? Há IA sendo usada de forma maliciosa?
 2. **Como funciona**: Explique o mecanismo do golpe de forma simples
 3. **Sinais de alerta**: O que a pessoa deveria ter percebido?
 4. **O que fazer agora**: Passos imediatos (se foi vítima ou suspeita)
 5. **Como se proteger**: Dicas práticas para não cair de novo
-6. **Onde denunciar**: SaferNet, delegacia virtual, Procon, etc.
+6. **Onde denunciar**: no Brasil, delegacia virtual do estado, SaferNet, Procon; se a pessoa estiver nos EUA, reportfraud.ftc.gov.
 
 Use linguagem simples. Muitos usuários podem ser idosos ou pessoas com menos experiência digital.
 
