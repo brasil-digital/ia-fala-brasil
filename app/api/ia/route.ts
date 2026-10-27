@@ -56,11 +56,11 @@ A PRIMEIRA linha da resposta deve ser exatamente: VEREDITO: <Verdadeiro | Falso 
 Depois, com títulos em **negrito**:
 
 1. **Análise**: O que está correto ou incorreto (máx. 3 parágrafos curtos)
-3. **Sinais de alerta**: Liste até 5 características do texto que indicam manipulação (linguagem sensacionalista, ausência de fonte, etc.)
-4. **O que buscar**: Sugira onde a pessoa pode verificar a informação (ex: G1, Agência Lupa, UOL, dados do IBGE)
-5. **Dica educativa**: Uma lição sobre pensamento crítico relacionada a este caso
+2. **Sinais de alerta**: Liste até 5 características do texto que indicam manipulação (linguagem sensacionalista, ausência de fonte, etc.)
+3. **O que buscar**: Sugira onde a pessoa pode verificar a informação (ex: G1, Agência Lupa, UOL, dados do IBGE), pelo nome, sem inventar endereços
+4. **Dica educativa**: Uma lição sobre pensamento crítico relacionada a este caso
 
-Seja direto, didático e use linguagem acessível. Não invente fatos.
+Seja direto, didático e use linguagem acessível. Não invente fatos, endereços de sites nem nomes de órgãos.
 
 Texto para analisar:
 """
@@ -96,8 +96,14 @@ Depois, com títulos em **negrito**:
 3. **Sinais de alerta**: O que a pessoa deveria ter percebido?
 4. **O que fazer agora**: Passos imediatos (se foi vítima ou suspeita)
 5. **Como se proteger**: Dicas práticas para não cair de novo
-6. **Onde denunciar**: no Brasil, delegacia virtual do estado, SaferNet, Procon; se a pessoa estiver nos EUA, reportfraud.ftc.gov.
+6. **Onde denunciar**: use SOMENTE estes canais, com estes endereços e nada além deles:
+   - Seu banco: ligue para o número que está no verso do cartão.
+   - Boletim de ocorrência: na delegacia online (Polícia Civil) do seu estado, ou ligue 190 em caso de emergência.
+   - SaferNet Brasil: new.safernet.org.br/denuncie
+   - Procon do seu estado, se houver compra ou cobrança envolvida.
+   - Só se a pessoa disser que mora nos EUA: reportfraud.ftc.gov
 
+Nunca invente endereços de sites, telefones ou nomes de órgãos. Se não tiver certeza de um endereço, não escreva.
 Use linguagem simples. Muitos usuários podem ser idosos ou pessoas com menos experiência digital.
 
 Situação descrita:
