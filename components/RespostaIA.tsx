@@ -39,7 +39,7 @@ export function inline(texto: string): ReactNode[] {
   );
 }
 
-function renderizar(texto: string): ReactNode[] {
+export function renderizar(texto: string): ReactNode[] {
   return texto.split("\n").map((bruta, i) => {
     const linha = bruta.trim();
     if (!linha) return <div key={i} className="h-2" />;

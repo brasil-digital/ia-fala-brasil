@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Zap, Send, Loader2, RotateCcw, Info } from "lucide-react";
 import { origem } from "@/lib/origem";
-import { inline } from "@/components/RespostaIA";
+import { renderizar } from "@/components/RespostaIA";
 
 type Mensagem = { role: "user" | "assistant"; content: string };
 
@@ -55,19 +55,6 @@ export default function PromptLabPage() {
     setCarregando(false);
   }
 
-  function formatarTexto(texto: string) {
-    return texto.split("\n").map((linha, i) => {
-      if (linha.match(/^\*\*(.*)\*\*$/)) {
-        return <h3 key={i} className="font-bold text-slate-900 mt-3 mb-1">{linha.replace(/\*\*/g, "")}</h3>;
-      }
-      if (linha.startsWith("- ") || linha.startsWith("• ")) {
-        return <li key={i} className="ml-4 mb-1">{linha.slice(2)}</li>;
-      }
-      if (linha.trim() === "") return <br key={i} />;
-      return <p key={i} className="mb-1">{inline(linha)}</p>;
-    });
-  }
-
   return (
     <div className="max-w-3xl mx-auto px-4 py-12 flex flex-col gap-6">
 
@@ -111,7 +98,7 @@ export default function PromptLabPage() {
                 : "bg-gray-100 text-gray-800 rounded-bl-sm border border-gray-200"
             }`}>
               {msg.role === "assistant" ? (
-                <div>{formatarTexto(msg.content)}</div>
+                <div>{renderizar(msg.content)}</div>
               ) : (
                 msg.content
               )}
