@@ -3,6 +3,9 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, CheckCircle, Loader2, User, Mail, MapPin, ChevronDown } from "lucide-react";
 
+// O contador de cadastros só aparece quando o número já impressiona.
+const MOSTRAR_CONTADOR_A_PARTIR = 500;
+
 const ESTADOS = [
   "AC","AL","AP","AM","BA","CE","DF","ES","GO","MA",
   "MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN",
@@ -64,7 +67,7 @@ export default function CadastroForm() {
           Cadastro confirmado. Você vai receber em primeira mão os novos módulos,
           alertas de golpes e as novidades do IA Fala Brasil.
         </p>
-        {total !== null && (
+        {total !== null && total >= MOSTRAR_CONTADOR_A_PARTIR && (
           <p className="mt-4 text-xs text-green-700 font-semibold">
             Você é o(a) cadastrado(a) número {total} da plataforma 🇧🇷
           </p>
@@ -75,7 +78,7 @@ export default function CadastroForm() {
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-2xl mx-auto">
-      {total !== null && total > 0 && (
+      {total !== null && total >= MOSTRAR_CONTADOR_A_PARTIR && (
         <p className="text-center text-sm text-green-700 font-semibold mb-5">
           🇧🇷 {total.toLocaleString("pt-BR")} pessoa{total !== 1 ? "s" : ""} já cadastrada{total !== 1 ? "s" : ""}
         </p>
@@ -156,12 +159,13 @@ export default function CadastroForm() {
         {status === "loading" ? (
           <><Loader2 className="w-5 h-5 animate-spin" /> Cadastrando...</>
         ) : (
-          <>Criar minha conta gratuita <ArrowRight className="w-5 h-5" /></>
+          <>Quero receber novidades <ArrowRight className="w-5 h-5" /></>
         )}
       </button>
 
       <p className="text-center text-xs text-gray-400 mt-3">
-        Seus dados são protegidos pela LGPD. Sem spam. Cancele quando quiser.
+        Sem spam. Saia da lista quando quiser. Veja a{" "}
+        <a href="/privacidade" className="underline hover:text-gray-600">Política de Privacidade</a>.
       </p>
     </form>
   );

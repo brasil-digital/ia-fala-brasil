@@ -70,8 +70,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-900">
         <Navbar />
         <main className="flex-1">{children}</main>
-        <footer className="border-t border-gray-200 bg-white py-6 text-center text-gray-500 text-sm">
-          © 2026 IA Fala Brasil · Educação · Tecnologia · Futuro 🇧🇷
+        <footer className="border-t border-gray-200 bg-white py-8 px-4 text-center text-gray-500 text-sm">
+          <a
+            href="https://www.falabrasil.digital/baixar/?src=iafalabrasil"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 mb-4 px-5 py-2.5 rounded-xl bg-green-700 text-white font-semibold hover:bg-green-600 transition-colors"
+          >
+            📱 Use também no app Fala Brasil · Android e iPhone
+          </a>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 mb-2">
+            <a href="/privacidade" className="hover:text-green-700">Política de Privacidade</a>
+            <a href="mailto:suporte@falabrasil.digital" className="hover:text-green-700">suporte@falabrasil.digital</a>
+          </div>
+          <p>© 2026 IA Fala Brasil · parte do projeto Fala Brasil 🇧🇷</p>
         </footer>
         <OrigemTracker />
         <Analytics />

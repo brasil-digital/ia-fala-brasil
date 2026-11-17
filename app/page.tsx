@@ -8,7 +8,7 @@ const modules = [
     href: "/aprender/detecta-fake",
     icon: Newspaper,
     color: "from-rose-500 to-orange-500",
-    badge: "Mais popular",
+    badge: "Comece por aqui",
     title: "Detecta Fake",
     desc: "Cole uma notícia e a IA ajuda você a descobrir se é verdadeira ou mentira. Aprenda a pensar criticamente.",
   },
@@ -75,7 +75,7 @@ export default function Home() {
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-slate-900">
             Aprenda{" "}
             <span className="gradient-text">Inteligência<br />Artificial</span>{" "}
-            do jeito <span className="text-yellow-500">Brasileiro</span>
+            do jeito <span className="text-yellow-500">brasileiro</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
             Prático, acessível e sem enrolação. Para estudantes, professores e qualquer cidadão
@@ -200,7 +200,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-gray-500">
-            {["Sem cadastro", "Funciona no celular", "Instale como app"].map((t) => (
+            {["Grátis para cidadãos", "Funciona no celular", "Instale como app"].map((t) => (
               <span key={t} className="flex items-center gap-1">
                 <CheckCircle className="w-4 h-4 text-green-600" /> {t}
               </span>
